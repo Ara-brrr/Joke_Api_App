@@ -5,7 +5,9 @@ import 'dart:async';
 import 'dart:convert';
 
 // Makes API call and parses the JSON to a Joke object if the call is successful.
-Future<Joke> fetchJoke(type, lang) async {
+
+//ADD type, lang TO FETCHJOKE()
+Future<Joke> fetchJoke() async {
   final response = await http.get(Uri.parse('https://v2.jokeapi.dev/joke/Programming,Miscellaneous,Dark,Pun?type=twopart'));
 
   if (response.statusCode == 200) {
@@ -13,8 +15,6 @@ Future<Joke> fetchJoke(type, lang) async {
     // then parse the JSON.
     return Joke.fromJson(jsonDecode(response.body));
   } else {
-    // If the server did not return a 200 OK response,
-    // then throw an exception.
     throw Exception('Failed to load Joke');
   }
 }
@@ -61,16 +61,6 @@ class MyApp extends StatelessWidget {
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
-
-  // This widget is the home page of your application. It is stateful, meaning
-  // that it has a State object (defined below) that contains fields that affect
-  // how it looks.
-
-  // This class is the configuration for the state. It holds the values (in this
-  // case the title) provided by the parent (in this case the App widget) and
-  // used by the build method of the State. Fields in a Widget subclass are
-  // always marked "final".
-
   final String title;
 
   @override
@@ -91,10 +81,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        // Here we take the value from the MyHomePage object that was created by
-        // the App.build method, and use it to set our appbar title.
         title: Text(widget.title),
       ),
+
+      
+
+
       body: ListView(
         padding: const EdgeInsets.only(left: 20, right: 20),
         children: [
@@ -121,61 +113,12 @@ class _MyHomePageState extends State<MyHomePage> {
       }),
 
 
-          Container(
-            margin: const EdgeInsets.only(top: 30, bottom: 20),
-              ),
-         const Text(
-            "Overskrift",
-         style: TextStyle(fontSize: 36)
-         ),
-         Image.asset('assets/neon.jpg'),
-  
-          Container(
-            
-            margin: const EdgeInsets.only(top: 30),
-            height: 200,
-            width: 300,
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(20),
-              color: Colors.green,),
-              child: Column(
-              mainAxisAlignment:
-              MainAxisAlignment.spaceBetween,
-              
-            
- 
-            
-              children: [
-                const Text("mer tekst her")
-                ,Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                  Container(width: 50, height: 50, color: Colors.white,),
-                  Container(width: 50, height: 50, color: Colors.white,),
-                  Container(width: 50, height: 50, color: Colors.white,)
-                ],)
-                ,Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: const [
-                    SizedBox(width: 50, child: Text("Hei les mere tekst her")),
-                    SizedBox(width: 50, child: Text("Hei les mere tekst her")),
-                    SizedBox(width: 50, child: Text("Hei les mere tekst her"))
-
-                  ],
-
-                )
-              ],)
-            
-            
-            
-
-          )
-],        
-
-      ), 
+          
+        ],
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const NySide()));
+          Navigator.push(context, MaterialPageRoute(builder: (context) => const Joke2()));
         },
         tooltip: 'new page',
         child: const Icon(Icons.arrow_forward),

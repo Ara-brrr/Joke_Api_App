@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class NySide extends StatelessWidget {
-  const NySide({Key? key}) : super(key: key);
+class Joke2 extends StatelessWidget {
+  const Joke2({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
