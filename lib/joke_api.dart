@@ -4,21 +4,21 @@ import 'dart:async';
 import 'dart:convert';
 
 //ADD type, lang TO FETCHJOKE()
-Future<Joke> fetchJoke(type, cat) async {
-  const baseUrl = 'https://v2.jokeapi.dev/joke/';
-  if cat {baseUrl += cat;}
-  if type = twopart {baseurl += ?type=twopart} else {baseurl += ?type=single}
+// Future<Joke> fetchJoke(type, cat) async {
+//   const baseUrl = 'https://v2.jokeapi.dev/joke/';
+//   if cat {baseUrl += cat;} else {baseUrl += Any}
+//   if type = twopart {baseurl += ?type=twopart} else {baseurl += ?type=single} else {baseurl += ?type=twopart}
 
-  final response = await http.get(Uri.parse(baseUrl));
+//   final response = await http.get(Uri.parse(baseUrl));
 
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return Joke.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception('Failed to load Joke');
-  }
-}
+//   if (response.statusCode == 200) {
+//     // If the server did return a 200 OK response,
+//     // then parse the JSON.
+//     return Joke.fromJson(jsonDecode(response.body));
+//   } else {
+//     throw Exception('Failed to load Joke');
+//   }
+// }
 // A Joke object that contains a setup and a delivery.
 class Joke {
   final String setup;
