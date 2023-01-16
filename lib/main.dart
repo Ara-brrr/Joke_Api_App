@@ -76,10 +76,10 @@ class _MyHomePageState extends State<MyHomePage> {
             value: dropdownValue,
             icon: const Icon(Icons.arrow_downward),
             elevation: 16,
-            style: const TextStyle(color: Colors.deepPurple),
+            style: const TextStyle(color: Colors.white),
             underline: Container(
               height: 2,
-              color: Colors.deepPurpleAccent,
+              color: Colors.white,
             ),
             onChanged: (String? newValue) {
               setState(() {
@@ -103,14 +103,6 @@ class _MyHomePageState extends State<MyHomePage> {
           
         ],
       ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(context, MaterialPageRoute(builder: (context) => const Joke2()));
-        },
-        tooltip: 'new page',
-        child: const Icon(Icons.arrow_forward),
-      ),
-       // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
 }
