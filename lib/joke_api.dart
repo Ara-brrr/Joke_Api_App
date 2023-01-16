@@ -3,6 +3,22 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+  Future<Joke> fetchJoke(type, cat) async {
+  String baseUrl = 'https://v2.jokeapi.dev/joke/';
+  if (cat != null) {baseUrl += cat;}
+  if (type != null) {baseUrl += "?type=$type";}
+  
+  final response = await http.get(Uri.parse(baseUrl));
+
+  if (response.statusCode == 200) {
+    // If the server did return a 200 OK response,
+    // then parse the JSON.
+    return Joke.fromJson(jsonDecode(response.body));
+  } else {
+    throw Exception('Failed to load Joke');
+  }
+}
+
 //ADD type, lang TO FETCHJOKE()
 // Future<Joke> fetchJoke(type, cat) async {
 //   const baseUrl = 'https://v2.jokeapi.dev/joke/';

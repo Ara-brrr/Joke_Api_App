@@ -1,13 +1,14 @@
+import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
-import 'package:jokes_api/joke_api.dart';
 import 'joke_2_part.dart';
-import 'joke 1 part.dart';
+import 'joke_api.dart';
 import 'dart:async';
 import 'dart:convert';
 
 // Makes API call and parses the JSON to a Joke object if the call is successful.
 
+const List<String> list = <String>['One', 'Two', 'Three', 'Four'];
 
 void main() {
   runApp(const MyApp());
@@ -37,35 +38,20 @@ class MyHomePage extends StatefulWidget {
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-class dropdown extends StatefulWidget {
-  const dropdown({super.key});
 
-  @override
-  State<dropdown> createState() => _dropdownState();
-}
+
+
+
 class _MyHomePageState extends State<MyHomePage> {
+  String dropdownValue = list.first;
 //added by aron
   String cat = 'Programming';
-  String type = 'Onepart';
-  String baseUrl = 'https://v2.jokeapi.dev/joke/';
+  String type = 'twopart';
 
-    late Future<Joke> futureJoke;
+  late Future<Joke> futureJoke;
 
 //added by aron
-  Future<Joke> fetchJoke(type, cat) async {
-  if (cat != null) {baseUrl += cat;}
-  if (type != null) {baseUrl += "?type=$type";}
-  
-  final response = await http.get(Uri.parse(baseUrl));
 
-  if (response.statusCode == 200) {
-    // If the server did return a 200 OK response,
-    // then parse the JSON.
-    return Joke.fromJson(jsonDecode(response.body));
-  } else {
-    throw Exception('Failed to load Joke');
-  }
-}
 
   @override
   void initState() {
@@ -76,18 +62,37 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+    
       appBar: AppBar(
         title: Text(widget.title),
       ),
 
-      
-
-
       body: ListView(
-        padding: const EdgeInsets.only(left: 20, right: 20),
+        padding: const 
+        EdgeInsets.only(left: 20, right: 20),
         children: [
           JokeBuilder(futureJoke: futureJoke,),
-
+          DropdownButton<String>(
+            value: dropdownValue,
+            icon: const Icon(Icons.arrow_downward),
+            elevation: 16,
+            style: const TextStyle(color: Colors.deepPurple),
+            underline: Container(
+              height: 2,
+              color: Colors.deepPurpleAccent,
+            ),
+            onChanged: (String? newValue) {
+              setState(() {
+                dropdownValue = newValue!;
+              });
+            },
+          
+          items: list.map<DropdownMenuItem<String>>((String value) {
+            return DropdownMenuItem<String>(
+              value: value,
+              child: Text(value),
+            );
+          }).toList(),),
       
       TextButton(
         child: const Text('Get New Joke'),
@@ -95,8 +100,6 @@ class _MyHomePageState extends State<MyHomePage> {
           futureJoke = fetchJoke(type, cat);
         });    
       }),
-
-
           
         ],
       ),
