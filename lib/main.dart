@@ -1,10 +1,6 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:http/http.dart' as http;
-import 'joke_2_part.dart';
 import 'joke_api.dart';
 import 'dart:async';
-import 'dart:convert';
 
 // Makes API call and parses the JSON to a Joke object if the call is successful.
 
@@ -21,7 +17,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Flutter Demo', 
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
