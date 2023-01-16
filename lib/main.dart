@@ -3,13 +3,10 @@ import 'joke_api.dart';
 import 'dart:async';
 
 // Makes API call and parses the JSON to a Joke object if the call is successful.
-
 const List<String> list = <String>['One', 'Two', 'Three', 'Four'];
-
 void main() {
   runApp(const MyApp());
 }
-
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -26,24 +23,18 @@ class MyApp extends StatelessWidget {
     );
   }
 }
-
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
-
   @override
   State<MyHomePage> createState() => _MyHomePageState();
 }
-
-
-
 
 class _MyHomePageState extends State<MyHomePage> {
   String dropdownValue = list.first;
 //added by aron
   String cat = 'Programming';
   String type = 'twopart';
-
   late Future<Joke> futureJoke;
 
 //added by aron
