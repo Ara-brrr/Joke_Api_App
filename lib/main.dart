@@ -3,7 +3,7 @@ import 'joke_api.dart';
 import 'dart:async';
 
 // Makes API call and parses the JSON to a Joke object if the call is successful.
-const List<String> list = <String>['One', 'Two', 'Three', 'Four'];
+List<String> list = <String>['One Part','Two Part'];
 void main() {
   runApp(const MyApp());
 }
