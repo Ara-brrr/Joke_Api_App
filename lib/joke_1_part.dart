@@ -5,6 +5,9 @@ import 'package:flutter/src/widgets/container.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:jokes_api/joke_api.dart';
 
+
+//need to make the one part joke show up on the screen
+//and then to have a button to fetch a new one part joke
 class Joke1 extends StatefulWidget {
   final String category;
   const Joke1({required this.category, super.key});
@@ -12,6 +15,7 @@ class Joke1 extends StatefulWidget {
   @override
   State<Joke1> createState() => _Joke1State();
 }
+
 
 class _Joke1State extends State<Joke1> {
   late Future<Joke> futureJoke;

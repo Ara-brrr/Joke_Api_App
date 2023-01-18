@@ -3,6 +3,7 @@ import 'package:http/http.dart' as http;
 import 'dart:async';
 import 'dart:convert';
 
+//fetching the one part joke from the api and returning it as a Joke object
 Future<Joke> fetchJoke(type, cat) async {
   String baseUrl = 'https://v2.jokeapi.dev/joke/';
   if (cat != null) {
@@ -23,7 +24,7 @@ Future<Joke> fetchJoke(type, cat) async {
     throw Exception('Failed to load Joke');
   }
 }
-
+//fetching the two part joke from the api and returning it as a Joke object
 Future<Joke1> fetchJoke1(type, cat) async {
   String baseUrl = 'https://v2.jokeapi.dev/joke/';
   if (cat != null) {
@@ -45,23 +46,6 @@ Future<Joke1> fetchJoke1(type, cat) async {
   }
 }
 
-//ADD type, lang TO FETCHJOKE()
-// Future<Joke> fetchJoke(type, cat) async {
-//   const baseUrl = 'https://v2.jokeapi.dev/joke/';
-//   if cat {baseUrl += cat;} else {baseUrl += Any}
-//   if type = twopart {baseurl += ?type=twopart} else {baseurl += ?type=single} else {baseurl += ?type=twopart}
-
-//   final response = await http.get(Uri.parse(baseUrl));
-
-//   if (response.statusCode == 200) {
-//     // If the server did return a 200 OK response,
-//     // then parse the JSON.
-//     return Joke.fromJson(jsonDecode(response.body));
-//   } else {
-//     throw Exception('Failed to load Joke');
-//   }
-// }
-// A Joke object that contains a setup and a delivery.
 class Joke {
   final String setup;
   final String delivery;
@@ -71,7 +55,7 @@ class Joke {
     required this.delivery,
   });
 
-  // A function that converts a response body into a Joke object.
+  //this is the one part joke
   factory Joke.fromJson(Map<String, dynamic> json) {
     return Joke(
       setup: json['setup'],
@@ -80,18 +64,18 @@ class Joke {
   }
 }
 
+
+//this is the two part joke
 class Joke1 {
   final String joke;
-
   const Joke1({required this.joke});
-
-  // A function that converts a response body into a Joke1 object.
   factory Joke1.fromJson(Map<String, dynamic> json) {
     return Joke1(
       joke: json['joke'],
     );
   }
 }
+
 
 class JokeBuilder extends StatefulWidget {
   final Future<Joke> futureJoke;
@@ -106,6 +90,7 @@ class _JokeBuilderState extends State<JokeBuilder> {
   String type = 'twopart';
   late Future<Joke> futureJoke;
 
+//this is the function that is called when the "Get New Joke" button is pressed.
   @override
   Widget build(BuildContext context) {
     return FutureBuilder<Joke>(
@@ -117,7 +102,7 @@ class _JokeBuilderState extends State<JokeBuilder> {
           return Text('${snapshot.error}');
         }
 
-        // By default, show a loading spinner.
+        //loading spinner
         return const CircularProgressIndicator();
       },
     );

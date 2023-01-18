@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'joke_api.dart';
 import 'dart:async';
 
-// Makes API call and parses the JSON to a Joke object if the call is successful.
+//list for the dropdown menu
 List<String> list = <String>['One Part', 'Two Part'];
 void main() {
   runApp(const MyApp());
@@ -25,6 +25,7 @@ class MyApp extends StatelessWidget {
   }
 }
 
+//Main page containing the dropdown menu and the JokeBuilder widget.
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -34,7 +35,6 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String dropdownValue = list.first;
-//added by aron
   String cat = 'Programming';
   String type = 'twopart';
   late Future<Joke> futureJoke;
@@ -71,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 dropdownValue = newValue!;
               });
             },
+            //Dropdown menu  and the get new joke button
             items: list.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
