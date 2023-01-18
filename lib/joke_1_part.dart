@@ -20,22 +20,22 @@ class _Joke1State extends State<Joke1> {
     fetchJoke1("onepart", widget.category);
     super.initState();
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: FutureBuilder<Joke>(
-          future: futureJoke,
-          builder: (context, snapshot) {
-            if (snapshot.hasData) {
-              return Text('${snapshot.data!.setup} \n ${snapshot.data!.delivery}');
-            } else if (snapshot.hasError) {
-              return Text('${snapshot.error}');
-            }
+        body: FutureBuilder<Joke>(
+      future: futureJoke,
+      builder: (context, snapshot) {
+        if (snapshot.hasData) {
+          return Text('${snapshot.data!.setup} \n ${snapshot.data!.delivery}');
+        } else if (snapshot.hasError) {
+          return Text('${snapshot.error}');
+        }
 
-            // By default, show a loading spinner.
-            return const CircularProgressIndicator();
-          },
-)
-    );
+        // By default, show a loading spinner.
+        return const CircularProgressIndicator();
+      },
+    ));
   }
 }

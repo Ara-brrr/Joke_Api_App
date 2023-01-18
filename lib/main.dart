@@ -3,10 +3,11 @@ import 'joke_api.dart';
 import 'dart:async';
 
 // Makes API call and parses the JSON to a Joke object if the call is successful.
-List<String> list = <String>['One Part','Two Part'];
+List<String> list = <String>['One Part', 'Two Part'];
 void main() {
   runApp(const MyApp());
 }
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -14,7 +15,7 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Funny app', 
+      title: 'Funny app',
       theme: ThemeData(
         brightness: Brightness.dark,
         primarySwatch: Colors.blue,
@@ -23,6 +24,7 @@ class MyApp extends StatelessWidget {
     );
   }
 }
+
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -37,9 +39,6 @@ class _MyHomePageState extends State<MyHomePage> {
   String type = 'twopart';
   late Future<Joke> futureJoke;
 
-//added by aron
-
-
   @override
   void initState() {
     super.initState();
@@ -49,16 +48,15 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-    
       appBar: AppBar(
         title: Text(widget.title),
       ),
-
       body: ListView(
-        padding: const 
-        EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         children: [
-          JokeBuilder(futureJoke: futureJoke,),
+          JokeBuilder(
+            futureJoke: futureJoke,
+          ),
           DropdownButton<String>(
             value: dropdownValue,
             icon: const Icon(Icons.arrow_downward),
@@ -73,21 +71,22 @@ class _MyHomePageState extends State<MyHomePage> {
                 dropdownValue = newValue!;
               });
             },
-          
-          items: list.map<DropdownMenuItem<String>>((String value) {
-            return DropdownMenuItem<String>(
-              value: value,
-              child: Text(value),
-            );
-          }).toList(),),
-      
-      TextButton(
-        child: const Text('Get New Joke'),
-        onPressed: () {setState(() {
-          futureJoke = fetchJoke(type, cat);
-        });    
-      }),
-          
+            items: list.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList(),
+          ),
+          TextButton(
+              child: const Text('Get New Joke'),
+              onPressed: () {
+                setState(() {
+                  futureJoke = fetchJoke(type, cat);
+              }
+             );
+            }
+          ),
         ],
       ),
     );

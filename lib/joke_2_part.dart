@@ -6,10 +6,14 @@ class Joke2 extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Center(child: ElevatedButton(child: const Text("Gå tilbake"),
-      onPressed: () {
-        Navigator.pop(context);
-      },),),
-      );
+      body: Center(
+        child: ElevatedButton(
+          child: const Text("Gå tilbake"),
+          onPressed: () {
+            Navigator.pop(context);
+          },
+        ),
+      ),
+    );
   }
 }
