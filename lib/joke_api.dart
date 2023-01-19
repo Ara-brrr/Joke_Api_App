@@ -55,7 +55,7 @@ class Joke {
     required this.delivery,
   });
 
-  //this is the one part joke
+  //this is the two part joke
   factory Joke.fromJson(Map<String, dynamic> json) {
     return Joke(
       setup: json['setup'],
@@ -65,7 +65,7 @@ class Joke {
 }
 
 
-//this is the two part joke
+//this is the one part joke
 class Joke1 {
   final String joke;
   const Joke1({required this.joke});
