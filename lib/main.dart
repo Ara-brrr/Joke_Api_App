@@ -79,14 +79,23 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }).toList(),
           ),
-          TextButton(
-              child: const Text('Get New Joke'),
-              onPressed: () {
-                setState(() {
-                  futureJoke = fetchJoke(type, cat);
-              }
-             );
-            }
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              ElevatedButton(
+                onPressed: () {
+                  setState(() {
+                    if (dropdownValue == 'One Part') {
+                      type = 'single';
+                    } else {
+                      type = 'twopart';
+                    }
+                    futureJoke = fetchJoke(type, cat);
+                  });
+                },
+                child: const Text('Get New Joke'),
+              ),
+            ],
           ),
         ],
       ),
