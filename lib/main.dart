@@ -79,6 +79,9 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }).toList(),
           ),
+          //get new joke button that now checks
+          //the value of the dropdown menu and displays the correct joke type
+          //alhamdulillah
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
