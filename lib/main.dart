@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
   String cat = 'null';
   String type = 'null';
   String lang = 'en';
-  String flag = 'nsfw,religious,political,racist,sexist';
+  String flag = 'nsfw,religious,racist,sexist';
   late Future<Joke> futureJoke;
 
   @override
