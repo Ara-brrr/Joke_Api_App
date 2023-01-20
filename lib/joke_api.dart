@@ -4,12 +4,15 @@ import 'dart:async';
 import 'dart:convert';
 
 //fetching the one part joke from the api and returning it as a Joke object
-Future<Joke> fetchJoke(type, cat, lang, flag) async {
+Future<Joke> fetchJoke(type, cat, String lang, String flag) async {
   String baseUrl = 'https://v2.jokeapi.dev/joke/';
- 
- String url = "$baseUrl$cat?type=$type&lang=$lang&blacklistFlags=$flag";
-
-  final response = await http.get(Uri.parse(url));
+  if (cat != null) {
+    baseUrl += cat;
+  }
+  if (type != null) {
+    baseUrl += "?type=$type";
+  }
+  final response = await http.get(Uri.parse(baseUrl));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
