@@ -4,6 +4,7 @@ import 'dart:async';
 
 //list for the dropdown menu
 List<String> list = <String>['One Part', 'Two Part'];
+List<String> list2 = <String>['Programming', 'Miscellaneous', 'Dark', 'Pun', 'Spooky', 'Christmas'];
 void main() {
   runApp(const MyApp());
 }
@@ -81,6 +82,29 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }).toList(),
           ),
+
+          DropdownButton(
+            value: cat,
+            icon: const Icon(Icons.arrow_downward),
+            elevation: 16,
+            style: const TextStyle(color: Colors.white),
+            underline: Container(
+              height: 2,
+              color: Colors.white,
+            ),
+            onChanged: (String? newValue) {
+              setState(() {
+                cat = newValue!;
+              });
+            },
+            items: list2.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList()
+            ),
+
           //get new joke button that now checks
           //the value of the dropdown menu and displays the correct joke type
           //alhamdulillah
