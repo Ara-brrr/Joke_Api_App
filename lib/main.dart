@@ -36,10 +36,10 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   String dropdownValue = list.first;
-  String cat = 'null';
-  String type = 'null';
+  String cat = 'Programming';
+  String type = 'twopart';
   String lang = 'en';
-  String flag = 'nsfw,religious,racist,sexist';
+  String flag = 'nsfw,religious,political,racist,sexist';
   late Future<Joke> futureJoke;
 
   @override
@@ -55,18 +55,19 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: ListView(
-        padding: const EdgeInsets.only(top:20, left: 20, right: 20),
+        padding: const EdgeInsets.only(left: 20, right: 20),
         children: [
           JokeBuilder(
             futureJoke: futureJoke,
           ),
-          DropdownButtonFormField<String>(
+          DropdownButton<String>(
             value: dropdownValue,
             icon: const Icon(Icons.arrow_downward),
             elevation: 16,
             style: const TextStyle(color: Colors.white),
-            decoration: const InputDecoration(
-              labelText: 'Joke Length',
+            underline: Container(
+              height: 2,
+              color: Colors.white,
             ),
             onChanged: (String? newValue) {
               setState(() {
@@ -82,14 +83,15 @@ class _MyHomePageState extends State<MyHomePage> {
             }).toList(),
           ),
 
-          DropdownButtonFormField(
+          DropdownButton(
             value: cat,
             icon: const Icon(Icons.arrow_downward),
-            decoration: const InputDecoration(
-              labelText: 'Category',
-            ),
             elevation: 16,
             style: const TextStyle(color: Colors.white),
+            underline: Container(
+              height: 2,
+              color: Colors.white,
+            ),
             onChanged: (String? newValue) {
               setState(() {
                 cat = newValue!;
