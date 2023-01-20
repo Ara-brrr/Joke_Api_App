@@ -37,12 +37,14 @@ class _MyHomePageState extends State<MyHomePage> {
   String dropdownValue = list.first;
   String cat = 'Programming';
   String type = 'twopart';
+  String lang = 'en';
+  String flag = 'nsfw,religious,political,racist,sexist';
   late Future<Joke> futureJoke;
 
   @override
   void initState() {
     super.initState();
-    futureJoke = fetchJoke(type, cat);
+    futureJoke = fetchJoke(type, cat, lang, flag);
   }
 
   @override
@@ -93,10 +95,10 @@ class _MyHomePageState extends State<MyHomePage> {
                     } else {
                       type = 'twopart';
                     }
-                    futureJoke = fetchJoke(type, cat);
+                    futureJoke = fetchJoke(type, cat, lang, flag);
                   });
                 },
-                child: const Text('Get New Joke'),
+                child: const Text('Generate Joke'),
               ),
             ],
           ),
