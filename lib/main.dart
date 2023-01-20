@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'joke_api.dart';
 import 'dart:async';
 
-//list for the dropdown menu
+//list for the length dropdown menu and the category dropdown menu
 List<String> list = <String>['One Part', 'Two Part'];
 List<String> list2 = <String>['Programming', 'Miscellaneous', 'Dark', 'Pun', 'Spooky', 'Christmas'];
 void main() {
@@ -12,7 +12,6 @@ void main() {
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -27,6 +26,7 @@ class MyApp extends StatelessWidget {
 }
 
 //Main page containing the dropdown menu and the JokeBuilder widget.
+//also wanted to add a color box behind the text but didnt have time.
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key, required this.title});
   final String title;
@@ -34,6 +34,9 @@ class MyHomePage extends StatefulWidget {
   State<MyHomePage> createState() => _MyHomePageState();
 }
 
+//used to set values for the dropdown menu and makes
+//the get new joke button react to the value of the dropdown menu
+//curently not working for one part jokes
 class _MyHomePageState extends State<MyHomePage> {
   String dropdownValue = list.first;
   String cat = 'Programming';
@@ -55,20 +58,17 @@ class _MyHomePageState extends State<MyHomePage> {
         title: Text(widget.title),
       ),
       body: ListView(
-        padding: const EdgeInsets.only(left: 20, right: 20),
+        padding: const EdgeInsets.only(top: 25, left: 20, right: 20),
         children: [
           JokeBuilder(
             futureJoke: futureJoke,
           ),
-          DropdownButton<String>(
+          //dropdown form field makes the dropdown menu look better and have the icons to the right instead of the left. (Also it destroyd my life and mental health :-)
+          DropdownButtonFormField<String>(
             value: dropdownValue,
-            icon: const Icon(Icons.arrow_downward),
+            icon: const Icon(Icons.arrow_downward, color: Colors.blue),
             elevation: 16,
             style: const TextStyle(color: Colors.white),
-            underline: Container(
-              height: 2,
-              color: Colors.white,
-            ),
             onChanged: (String? newValue) {
               setState(() {
                 dropdownValue = newValue!;
@@ -82,16 +82,12 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }).toList(),
           ),
-
-          DropdownButton(
+          //same thing but for the category dropdown menu
+          DropdownButtonFormField(
             value: cat,
-            icon: const Icon(Icons.arrow_downward),
+            icon: const Icon(Icons.arrow_downward, color: Colors.blue),
             elevation: 16,
             style: const TextStyle(color: Colors.white),
-            underline: Container(
-              height: 2,
-              color: Colors.white,
-            ),
             onChanged: (String? newValue) {
               setState(() {
                 cat = newValue!;
