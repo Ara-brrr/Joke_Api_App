@@ -66,7 +66,7 @@ class _MyHomePageState extends State<MyHomePage> {
             elevation: 16,
             style: const TextStyle(color: Colors.white),
             decoration: const InputDecoration(
-              labelText: 'Joke Type',
+              labelText: 'Joke Length',
             ),
             onChanged: (String? newValue) {
               setState(() {
