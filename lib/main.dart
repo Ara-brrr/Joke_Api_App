@@ -63,6 +63,7 @@ class _MyHomePageState extends State<MyHomePage> {
         children: [
           JokeBuilder(
             futureJoke: futureJoke,
+            
           ),
           //dropdown form field makes the dropdown menu look better and have the icons to the right instead of the left. (Also it destroyd my life and mental health :-)
           DropdownButtonFormField<String>(
@@ -101,6 +102,7 @@ class _MyHomePageState extends State<MyHomePage> {
               );
             }).toList()
             ),
+
 
             DropdownButtonFormField(
             value: lang,
