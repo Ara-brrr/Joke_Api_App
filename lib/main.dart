@@ -5,6 +5,7 @@ import 'dart:async';
 //list for the length dropdown menu and the category dropdown menu
 List<String> list = <String>['One Part', 'Two Part'];
 List<String> list2 = <String>['Programming', 'Miscellaneous', 'Dark', 'Pun', 'Spooky', 'Christmas'];
+List<String> list3 = <String>['en', 'es', 'fr', 'pt', 'de', 'it', 'ru', 'sv', 'pl', 'tr', 'ja', 'zh', 'nl', 'pt', 'id', 'ar', 'hi', 'th', 'cs', 'da', 'fa', 'fi', 'he', 'hu', 'no', 'ro', 'sk', 'sr', 'sv', 'ta', 'vi'];
 void main() {
   runApp(const MyApp());
 }
@@ -94,6 +95,24 @@ class _MyHomePageState extends State<MyHomePage> {
               });
             },
             items: list2.map<DropdownMenuItem<String>>((String value) {
+              return DropdownMenuItem<String>(
+                value: value,
+                child: Text(value),
+              );
+            }).toList()
+            ),
+
+            DropdownButtonFormField(
+            value: lang,
+            icon: const Icon(Icons.arrow_downward, color: Colors.blue),
+            elevation: 16,
+            style: const TextStyle(color: Colors.white),
+            onChanged: (String? newValue) {
+              setState(() {
+                lang = newValue!;
+              });
+            },
+            items: list3.map<DropdownMenuItem<String>>((String value) {
               return DropdownMenuItem<String>(
                 value: value,
                 child: Text(value),
