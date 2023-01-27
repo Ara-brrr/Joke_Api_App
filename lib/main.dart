@@ -6,6 +6,7 @@ import 'dart:async';
 List<String> list = <String>['One Part', 'Two Part'];
 List<String> list2 = <String>['Programming', 'Miscellaneous', 'Dark', 'Pun', 'Spooky', 'Christmas'];
 List<String> list3 = <String>['en', 'es', 'fr', 'pt', 'de', 'it', 'ru', 'sv', 'pl', 'tr', 'ja', 'zh', 'nl', 'pt', 'id', 'ar', 'hi', 'th', 'cs', 'da', 'fa', 'fi', 'he', 'hu', 'no', 'ro', 'sk', 'sr', 'sv', 'ta', 'vi'];
+
 void main() {
   runApp(const MyApp());
 }
@@ -66,7 +67,10 @@ class _MyHomePageState extends State<MyHomePage> {
             
           ),
           //dropdown form field makes the dropdown menu look better and have the icons to the right instead of the left. (Also it destroyd my life and mental health :-)
-          DropdownButtonFormField<String>(
+
+          //try using the dropdown button instead of the dropdown menu form field
+          //doing this to make the dropdown menu look better and inprove interactivity
+          DropdownButton<String>(
             value: dropdownValue,
             icon: const Icon(Icons.arrow_downward, color: Colors.blue),
             elevation: 16,
@@ -139,6 +143,7 @@ class _MyHomePageState extends State<MyHomePage> {
                     futureJoke = fetchJoke(type, cat, lang, flag);
                   });
                 },
+                
                 child: const Text('Generate Joke'),
               ),
             ],
